@@ -1,12 +1,8 @@
 package com.bridgelabz.controller;
 
 import com.bridgelabz.dto.EmployeeDto;
-import com.bridgelabz.dto.ResponseDto;
-import com.bridgelabz.entity.EmployeeEntity;
 import com.bridgelabz.service.EmployeePayrollService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -64,10 +60,9 @@ public class EmployeePayrollController {
      */
     @DeleteMapping("/detail/{id}")
     public String deleteEmployee(@PathVariable int id) {
+
         return employeePayrollService.deleteEmployee(id);
     }
-
-
 
 }
 

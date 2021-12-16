@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -43,9 +44,9 @@ public class EmployeePayrollControllerIntegrationTest {
         when(employeePayrollService.addEmployee(any())).thenReturn("success");
         mockMvc.perform(MockMvcRequestBuilders
                 .post("/employee/detail")
-                .content("{\"name\":\"Roma\",\"salary\":50000,\"gender\":\"Female\"," +
-                        "\"joiningDate\":\"15-01-2021\",\"department\":\"it\"," +
-                        "\"notes\":\"regular\",\"imagePath\":\"a.jpg\"}")
+                .content("{\"name\":\"Sreelipta\",\"salary\":50000,\"gender\":\"Female\"," +
+                        "\"joiningDate\":\"09/21/2021\",\"department\":[\"Sales,Development,Testing\"]," +
+                        "\"notes\":\"regular\",\"imagePath\":\"s.jpg\"}")
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk());
     }
@@ -56,7 +57,7 @@ public class EmployeePayrollControllerIntegrationTest {
         employeeDto.setName("Sreelipta");
         employeeDto.setSalary(20000);
         employeeDto.setGender("Female");
-        employeeDto.setDepartment("cse");
+        employeeDto.setDepartment((List.of("Cse")));
         employeeDto.setNotes("Regular");
         employeeDto.setJoiningDate("15-01-2021");
         employeeDto.setImagePath("image.jpg");
@@ -64,9 +65,9 @@ public class EmployeePayrollControllerIntegrationTest {
         when(employeePayrollService.updateEmployee(id, employeeDto)).thenReturn("success");
         mockMvc.perform(MockMvcRequestBuilders
                 .put("/employee/detail/1")
-                .content("{\"name\":\"Roma\",\"salary\":50000,\"gender\":\"Female\"," +
-                        "\"joiningDate\":\"15-01-2021\",\"department\":\"it\"," +
-                        "\"notes\":\"regular\",\"imagePath\":\"a.jpg\"}")
+                .content("{\"name\":\"Sreelipta\",\"salary\":50000,\"gender\":\"Female\"," +
+                        "\"joiningDate\":\"09/21/2021\",\"department\":[\"Sales,Development,Testing\"]," +
+                        "\"notes\":\"regular\",\"imagePath\":\"s.jpg\"}")
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk());
     }
@@ -76,9 +77,9 @@ public class EmployeePayrollControllerIntegrationTest {
         when(employeePayrollService.deleteEmployee(1)).thenReturn("success");
         mockMvc.perform(MockMvcRequestBuilders
                 .delete("/employee/detail/1")
-                .content("\"{\"name\":\"Roma\",\"salary\":50000,\"gender\":\"Female\"," +
-                        "\"joiningDate\":\"15-01-2021\",\"department\":\"it\"," +
-                        "\"notes\":\"regular\",\"imagePath\":\"a.jpg\"}\"")
+                .content("{\"name\":\"Sreelipta\",\"salary\":50000,\"gender\":\"Female\"," +
+                        "\"joiningDate\":\"09/21/2021\",\"department\":[\"Sales,Development,Testing\"]," +
+                        "\"notes\":\"regular\",\"imagePath\":\"s.jpg\"}")
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk());
     }

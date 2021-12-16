@@ -30,7 +30,7 @@ public class EmployeePayrollControllerTest {
         employeeDto.setName("Sreelipta");
         employeeDto.setGender("Female");
         employeeDto.setSalary(20000);
-        employeeDto.setDepartment("cse");
+        employeeDto.setDepartment((List.of("Cse")));
         employeeDto.setNotes("Regular");
         employeeDto.setJoiningDate("15/01/2021");
         employeeDtoList.add(employeeDto);
@@ -38,7 +38,7 @@ public class EmployeePayrollControllerTest {
         employeeDto1.setName("Simran");
         employeeDto1.setSalary(25000);
         employeeDto1.setGender("Female");
-        employeeDto1.setDepartment("cse");
+        employeeDto1.setDepartment((List.of("Cse")));
         employeeDto1.setNotes("Regular");
         employeeDto1.setJoiningDate("05/06/2021");
         employeeDtoList.add(employeeDto1);
@@ -60,7 +60,7 @@ public class EmployeePayrollControllerTest {
         employeeDto.setName("Sreelipta");
         employeeDto.setSalary(20000);
         employeeDto.setGender("Female");
-        employeeDto.setDepartment("cse");
+        employeeDto.setDepartment((List.of("Cse")));
         employeeDto.setNotes("Regular");
         employeeDto.setJoiningDate("15/01/2021");
         when(employeePayrollService.addEmployee(employeeDto)).thenReturn(successString);
@@ -76,7 +76,7 @@ public class EmployeePayrollControllerTest {
         employeeDto.setName("Sreelipta");
         employeeDto.setSalary(20000);
         employeeDto.setGender("Female");
-        employeeDto.setDepartment("cse");
+        employeeDto.setDepartment((List.of("Cse")));
         employeeDto.setNotes("Regular");
         employeeDto.setJoiningDate("15/01/2021");
         when(employeePayrollService.updateEmployee(employeeId, employeeDto)).thenReturn(successString);

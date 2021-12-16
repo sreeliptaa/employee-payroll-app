@@ -3,6 +3,7 @@ package com.bridgelabz.dto;
 import lombok.Data;
 
 import javax.validation.constraints.*;
+import java.util.List;
 
 /**
  * Purpose : To invoke data from client
@@ -12,33 +13,32 @@ import javax.validation.constraints.*;
  */
 @Data
 public class EmployeeDto {
-    @NotNull
-    @Pattern(regexp = "^[A-Z][a-z]{2,}$", message = "Name should be start with capital latter " +
-            "& should contain more then 3 character ")
+    @NotNull(message = "Name should not be empty")
+    @Pattern(regexp = "^[A-Z][a-z]{2,}$", message = "Not a valid Name")
     private String name;
 
-    @NotNull
+    @NotNull(message = "Salary should not be empty")
     @Min(value = 10000, message = "Minimum wage should be more than 10000")
     private double salary;
 
-    @NotNull
-    @Pattern(regexp = "^(?:m|M|male|Male|f|F|female|Female|o|O|Other|other)$", message = "Please type gender F - female " +
-            "M - male , O - others/Transgender")
+    @NotNull(message = "Gender field should not be empty")
+    @Pattern(regexp = "Male|Female", message = "Gender Should be either Male or Female")
     private String gender;
 
-    @NotNull
+    @NotNull(message = "Joining date should not be empty")
+    @Pattern(regexp = "^(1[0-2]|0[1-9])/(3[01]|[12][0-9]|0[1-9])/[0-9]{4}$",
+            message = "Date should be maintain the format : mm/dd/yyyy")
     private String joiningDate;
 
-    @NotNull
-    @Pattern(regexp = "^[a-zA-Z]{2,}$", message = "Department should be start with capital latter " +
-            "& should contain more then 2 character ")
-    private String department;
+    @NotNull(message = "Department name should not be empty")
+    @Size(message = "Department name Should be within 50 letters", max = 50)
+    private List<String> department;
 
-    @NotNull
-    @Pattern(regexp = "^[a-zA-Z]+$", message = "Notes should be start with capital latter " +
-            "& should contain more then 3 character ")
+    @NotNull(message = "Notes should not be empty")
+    @Size(message = "Notes should be within 150 letters", max = 150)
     private String notes;
 
-    @NotNull
+    @NotBlank(message = "Image can not be empty")
     private String imagePath;
+
 }

@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class EmployeePayrollService {
-    private static final String EMPLOYEE_ADDED_SUCCESSFULLY = "Employee added successfully";
+    private static final String EMPLOYEE_ADDED_SUCCESSFULLY = "Employee details added successfully";
     private static final String INVALID_ID = "Invalid Id";
     private static final String EMPLOYEE_DELETED_SUCCESSFULLY = "Employee details deleted successfully";
     private static final String EMPLOYEE_UPDATED_SUCCESSFULLY = "Employee Details updated successfully";

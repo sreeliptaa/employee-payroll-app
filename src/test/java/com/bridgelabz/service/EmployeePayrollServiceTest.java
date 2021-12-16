@@ -44,7 +44,7 @@ public class EmployeePayrollServiceTest {
         employeeEntity1.setName("Sreelipta");
         employeeEntity1.setGender("Female");
         employeeEntity1.setSalary(20000);
-        employeeEntity1.setDepartment("cse");
+        employeeEntity1.setDepartment((List.of("Cse")));
         employeeEntity1.setNotes("Regular");
         employeeEntity1.setJoiningDate("15/01/2021");
 
@@ -54,7 +54,7 @@ public class EmployeePayrollServiceTest {
         employeeEntity2.setName("Simran");
         employeeEntity2.setGender("Female");
         employeeEntity2.setSalary(25000);
-        employeeEntity2.setDepartment("cse");
+        employeeEntity2.setDepartment((List.of("Cse")));
         employeeEntity2.setNotes("Regular");
         employeeEntity2.setJoiningDate("05/06/2021");
         employeeEntityList.add(employeeEntity2);
@@ -64,7 +64,7 @@ public class EmployeePayrollServiceTest {
         employeeDto1.setName("Sreelipta");
         employeeDto1.setGender("Female");
         employeeDto1.setSalary(20000);
-        employeeDto1.setDepartment("cse");
+        employeeDto1.setDepartment((List.of("Cse")));
         employeeDto1.setNotes("Regular");
         employeeDto1.setJoiningDate("15/01/2021");
         employeeDtoList.add(employeeDto1);
@@ -72,7 +72,7 @@ public class EmployeePayrollServiceTest {
         employeeDto2.setName("Simran");
         employeeDto2.setSalary(25000);
         employeeDto2.setGender("Female");
-        employeeDto2.setDepartment("cse");
+        employeeDto2.setDepartment((List.of("Cse")));
         employeeDto2.setNotes("Regular");
         employeeDto2.setJoiningDate("05/06/2021");
         employeeDtoList.add(employeeDto2);
@@ -94,12 +94,12 @@ public class EmployeePayrollServiceTest {
 
     @Test
     void givenWhenAddEmployeeDataCalled_ShouldAddEmployeeDataAndReturnSuccessMessage() {
-        String successMessage = "Employee added successfully";
+        String successMessage = "Employee details added successfully";
         EmployeeDto employeeDto = new EmployeeDto();
         employeeDto.setName("Sreelipta");
         employeeDto.setGender("Female");
         employeeDto.setSalary(20000);
-        employeeDto.setDepartment("cse");
+        employeeDto.setDepartment((List.of("Cse")));
         employeeDto.setNotes("Regular");
         employeeDto.setJoiningDate("15/01/2021");
 
@@ -108,7 +108,7 @@ public class EmployeePayrollServiceTest {
         employeeEntity.setName("Sreelipta");
         employeeEntity.setGender("Female");
         employeeEntity.setSalary(20000);
-        employeeEntity.setDepartment("cse");
+        employeeEntity.setDepartment((List.of("Cse")));
         employeeEntity.setNotes("Regular");
         employeeEntity.setJoiningDate("15/01/2021");
 
@@ -127,7 +127,7 @@ public class EmployeePayrollServiceTest {
         employeeDto.setName("Sreelipta");
         employeeDto.setGender("Female");
         employeeDto.setSalary(20000);
-        employeeDto.setDepartment("cse");
+        employeeDto.setDepartment((List.of("Cse")));
         employeeDto.setNotes("Regular");
         employeeDto.setJoiningDate("15/01/2021");
 
@@ -136,10 +136,9 @@ public class EmployeePayrollServiceTest {
         employeeEntity.setName("Sreelipta");
         employeeEntity.setGender("Female");
         employeeEntity.setSalary(20000);
-        employeeEntity.setDepartment("cse");
+        employeeEntity.setDepartment((List.of("Cse")));
         employeeEntity.setNotes("Regular");
         employeeEntity.setJoiningDate("15/01/2021");
-
 
         when(employeeRepository.findById(employeeId)).thenReturn(Optional.of(employeeEntity));
         when(employeePayrollBuilder.buildEmployeeEntity(employeeDto, employeeEntity)).thenReturn(employeeEntity);
@@ -162,7 +161,7 @@ public class EmployeePayrollServiceTest {
         employeeDto.setName("Sreelipta");
         employeeDto.setGender("Female");
         employeeDto.setSalary(20000);
-        employeeDto.setDepartment("cse");
+        employeeDto.setDepartment((List.of("Cse")));
         employeeDto.setNotes("Regular");
         employeeDto.setJoiningDate("15/01/2021");
         when(employeeRepository.findById(employeeId)).thenReturn(Optional.empty());
@@ -177,7 +176,7 @@ public class EmployeePayrollServiceTest {
         employeeDto.setName("Sreelipta");
         employeeDto.setGender("Female");
         employeeDto.setSalary(20000);
-        employeeDto.setDepartment("cse");
+        employeeDto.setDepartment((List.of("Cse")));
         employeeDto.setNotes("Regular");
         employeeDto.setJoiningDate("15/01/2021");
 
@@ -186,7 +185,7 @@ public class EmployeePayrollServiceTest {
         employeeEntity.setName("Sreelipta");
         employeeEntity.setGender("Female");
         employeeEntity.setSalary(20000);
-        employeeEntity.setDepartment("cse");
+        employeeEntity.setDepartment((List.of("Cse")));
         employeeEntity.setNotes("Regular");
         employeeEntity.setJoiningDate("15/01/2021");
 
@@ -203,13 +202,11 @@ public class EmployeePayrollServiceTest {
         employeeEntity.setName("Sreelipta");
         employeeEntity.setGender("Female");
         employeeEntity.setSalary(20000);
-        employeeEntity.setDepartment("cse");
+        employeeEntity.setDepartment((List.of("Cse")));
         employeeEntity.setNotes("Regular");
         employeeEntity.setJoiningDate("15/01/2021");
         when(employeeRepository.findById(employeeEntity.getId())).thenReturn(Optional.empty());
         assertThrows(EmployeePayrollCustomException.class,
                 ()-> employeePayrollService.deleteEmployee(employeeEntity.getId()));
     }
-
-
 }

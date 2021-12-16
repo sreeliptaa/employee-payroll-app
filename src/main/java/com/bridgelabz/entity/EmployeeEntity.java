@@ -1,7 +1,9 @@
 package com.bridgelabz.entity;
 
 import lombok.Data;
+
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Purpose : To contain the entities in the database
@@ -16,28 +18,30 @@ public class EmployeeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "EMP_ID")
+    @Column(name = "EMPLOYEE_ID")
     private int id;
 
     @Column(name = "NAME")
     private String name;
 
-    @Column(name = "GENDER")
-    private String gender;
-
     @Column(name = "SALARY")
     private double salary;
 
-    @Column(name = "DEPARTMENT")
-    private String department;
+    @Column(name = "GENDER")
+    private String gender;
+
+    @Column(name = "START_DATE")
+    private String joiningDate;
+
+    @ElementCollection
+    @CollectionTable(name = "employee_department", joinColumns = @JoinColumn(name = "id"))
+    private List<String> department;
 
     @Column(name = "NOTES")
     private String notes;
 
-    @Column(name = "IMAGE")
+    @Column(name = "IMAGE_PATH")
     private String imagePath;
 
-    @Column(name = "START_DATE")
-    private String joiningDate;
 
 }
