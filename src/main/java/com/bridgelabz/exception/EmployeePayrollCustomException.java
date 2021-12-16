@@ -7,9 +7,9 @@ package com.bridgelabz.exception;
  * @since : 04-12-2021
  */
 
-public class EmployeeCustomException extends RuntimeException{
+public class EmployeePayrollCustomException extends RuntimeException{
 
-    public EmployeeCustomException(String message) {
+    public EmployeePayrollCustomException(String message) {
         super(message);
     }
 }

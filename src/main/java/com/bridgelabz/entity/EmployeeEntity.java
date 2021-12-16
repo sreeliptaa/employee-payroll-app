@@ -19,18 +19,25 @@ public class EmployeeEntity {
     @Column(name = "EMP_ID")
     private int id;
 
-    @Column(name = "NAME", nullable = false)
+    @Column(name = "NAME")
     private String name;
+
+    @Column(name = "GENDER")
+    private String gender;
 
     @Column(name = "SALARY")
     private double salary;
 
-    @Column(name = "GENDER", nullable = false)
-    private String gender;
-
-    @Column(name = "DEPT")
+    @Column(name = "DEPARTMENT")
     private String department;
 
     @Column(name = "NOTES")
     private String notes;
+
+    @Column(name = "IMAGE")
+    private String imagePath;
+
+    @Column(name = "START_DATE")
+    private String joiningDate;
+
 }

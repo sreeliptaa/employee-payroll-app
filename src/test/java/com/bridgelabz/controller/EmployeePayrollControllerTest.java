@@ -28,10 +28,11 @@ public class EmployeePayrollControllerTest {
         List<EmployeeDto> employeeDtoList = new ArrayList<>();
         EmployeeDto employeeDto = new EmployeeDto();
         employeeDto.setName("Sreelipta");
-        employeeDto.setSalary(20000);
         employeeDto.setGender("Female");
+        employeeDto.setSalary(20000);
         employeeDto.setDepartment("cse");
         employeeDto.setNotes("Regular");
+        employeeDto.setJoiningDate("15/01/2021");
         employeeDtoList.add(employeeDto);
         EmployeeDto employeeDto1 = new EmployeeDto();
         employeeDto1.setName("Simran");
@@ -39,6 +40,7 @@ public class EmployeePayrollControllerTest {
         employeeDto1.setGender("Female");
         employeeDto1.setDepartment("cse");
         employeeDto1.setNotes("Regular");
+        employeeDto1.setJoiningDate("05/06/2021");
         employeeDtoList.add(employeeDto1);
         when(employeePayrollService.getListOfAllEmployee()).thenReturn(employeeDtoList);
         List<EmployeeDto> actualResponse = employeePayrollController.getListOfAllEmployee();
@@ -60,6 +62,7 @@ public class EmployeePayrollControllerTest {
         employeeDto.setGender("Female");
         employeeDto.setDepartment("cse");
         employeeDto.setNotes("Regular");
+        employeeDto.setJoiningDate("15/01/2021");
         when(employeePayrollService.addEmployee(employeeDto)).thenReturn(successString);
         String actualResponseString = employeePayrollController.addEmployee(employeeDto);
         assertEquals(successString, actualResponseString);
@@ -75,6 +78,7 @@ public class EmployeePayrollControllerTest {
         employeeDto.setGender("Female");
         employeeDto.setDepartment("cse");
         employeeDto.setNotes("Regular");
+        employeeDto.setJoiningDate("15/01/2021");
         when(employeePayrollService.updateEmployee(employeeId, employeeDto)).thenReturn(successString);
         String actualResponseString = employeePayrollController.updateEmployee(employeeId,employeeDto);
         assertEquals(successString, actualResponseString);

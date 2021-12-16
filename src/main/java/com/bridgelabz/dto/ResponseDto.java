@@ -1,8 +1,8 @@
 package com.bridgelabz.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 /**
  * Purpose : To define the error details
@@ -11,10 +11,15 @@ import lombok.NoArgsConstructor;
  * @since 10-12-2021
  */
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class ResponseDto {
+    private Date timeStamp;
     private String message;
-    private Object data;
+    private String details;
+
+    public ResponseDto(Date timeStamp, String message, String details) {
+        this.timeStamp = timeStamp;
+        this.message = message;
+        this.details = details;
+    }
 
 }

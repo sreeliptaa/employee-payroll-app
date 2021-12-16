@@ -3,7 +3,7 @@ package com.bridgelabz.service;
 import com.bridgelabz.builder.EmployeePayrollBuilder;
 import com.bridgelabz.dto.EmployeeDto;
 import com.bridgelabz.entity.EmployeeEntity;
-import com.bridgelabz.exception.CustomException;
+import com.bridgelabz.exception.EmployeePayrollCustomException;
 import com.bridgelabz.repository.EmployeeRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -38,34 +38,35 @@ public class EmployeePayrollServiceTest {
     private EmployeePayrollBuilder employeePayrollBuilder;
 
     @Test
-    void givenwhenGetAllEmployeeDataCalled_ShouldReturnTheListOfEmployee() {
+    void givenWhenGetAllEmployeeCalled_ShouldReturnTheListOfEmployee() {
         List<EmployeeEntity> employeeEntityList = new ArrayList<>();
         EmployeeEntity employeeEntity1 = new EmployeeEntity();
-        employeeEntity1.setId(1);
         employeeEntity1.setName("Sreelipta");
-        employeeEntity1.setSalary(20000);
         employeeEntity1.setGender("Female");
+        employeeEntity1.setSalary(20000);
         employeeEntity1.setDepartment("cse");
         employeeEntity1.setNotes("Regular");
+        employeeEntity1.setJoiningDate("15/01/2021");
 
         employeeEntityList.add(employeeEntity1);
         EmployeeEntity employeeEntity2 = new EmployeeEntity();
         employeeEntity2.setId(2);
         employeeEntity2.setName("Simran");
-        employeeEntity2.setSalary(25000);
         employeeEntity2.setGender("Female");
+        employeeEntity2.setSalary(25000);
         employeeEntity2.setDepartment("cse");
         employeeEntity2.setNotes("Regular");
-
+        employeeEntity2.setJoiningDate("05/06/2021");
         employeeEntityList.add(employeeEntity2);
 
         List<EmployeeDto> employeeDtoList = new ArrayList<>();
         EmployeeDto employeeDto1 = new EmployeeDto();
         employeeDto1.setName("Sreelipta");
-        employeeDto1.setSalary(20000);
         employeeDto1.setGender("Female");
+        employeeDto1.setSalary(20000);
         employeeDto1.setDepartment("cse");
         employeeDto1.setNotes("Regular");
+        employeeDto1.setJoiningDate("15/01/2021");
         employeeDtoList.add(employeeDto1);
         EmployeeDto employeeDto2 = new EmployeeDto();
         employeeDto2.setName("Simran");
@@ -73,6 +74,7 @@ public class EmployeePayrollServiceTest {
         employeeDto2.setGender("Female");
         employeeDto2.setDepartment("cse");
         employeeDto2.setNotes("Regular");
+        employeeDto2.setJoiningDate("05/06/2021");
         employeeDtoList.add(employeeDto2);
 
         when(employeeRepository.findAll()).thenReturn(employeeEntityList);
@@ -87,26 +89,28 @@ public class EmployeePayrollServiceTest {
     void WhenFindEmployeeDetailsByIdCalled_ThenIfIdIsNotFound_ShouldThrowException() {
         int id = 1;
         when(employeeRepository.findById(id)).thenReturn(Optional.empty());
-        assertThrows(CustomException.class, () -> employeePayrollService.findAtmEntityById(id));
+        assertThrows(EmployeePayrollCustomException.class, () -> employeePayrollService.findEmployeeById(id));
     }
 
     @Test
-    void givenwhenAddEmployeeDataCalled_ShouldAddEmployeeDataAndReturnSuccessMessage() {
+    void givenWhenAddEmployeeDataCalled_ShouldAddEmployeeDataAndReturnSuccessMessage() {
         String successMessage = "Employee added successfully";
         EmployeeDto employeeDto = new EmployeeDto();
         employeeDto.setName("Sreelipta");
-        employeeDto.setSalary(20000);
         employeeDto.setGender("Female");
+        employeeDto.setSalary(20000);
         employeeDto.setDepartment("cse");
         employeeDto.setNotes("Regular");
+        employeeDto.setJoiningDate("15/01/2021");
 
         EmployeeEntity employeeEntity = new EmployeeEntity();
         employeeEntity.setId(1);
         employeeEntity.setName("Sreelipta");
-        employeeEntity.setSalary(20000);
         employeeEntity.setGender("Female");
+        employeeEntity.setSalary(20000);
         employeeEntity.setDepartment("cse");
         employeeEntity.setNotes("Regular");
+        employeeEntity.setJoiningDate("15/01/2021");
 
         when(modelMapper.map(employeeDto, EmployeeEntity.class)).thenReturn(employeeEntity);
         String actualMessage = employeePayrollService.addEmployee(employeeDto);
@@ -115,24 +119,27 @@ public class EmployeePayrollServiceTest {
     }
 
     @Test
-    void givenwhenUpdateEmployeeDataCalled_ShouldUpdateEmployeeDataAndReturnSuccessMessage() {
+    void givenWhenUpdateEmployeeDataCalled_ShouldUpdateEmployeeDataAndReturnSuccessMessage() {
         int employeeId = 1;
         ArgumentCaptor<EmployeeEntity> employeePayrollArgumentCaptor = ArgumentCaptor.forClass(EmployeeEntity.class);
         String successMessage = "Employee Details updated successfully";
         EmployeeDto employeeDto = new EmployeeDto();
         employeeDto.setName("Sreelipta");
-        employeeDto.setSalary(20000);
         employeeDto.setGender("Female");
+        employeeDto.setSalary(20000);
         employeeDto.setDepartment("cse");
         employeeDto.setNotes("Regular");
+        employeeDto.setJoiningDate("15/01/2021");
 
         EmployeeEntity employeeEntity = new EmployeeEntity();
         employeeEntity.setId(1);
         employeeEntity.setName("Sreelipta");
-        employeeEntity.setSalary(20000);
         employeeEntity.setGender("Female");
+        employeeEntity.setSalary(20000);
         employeeEntity.setDepartment("cse");
         employeeEntity.setNotes("Regular");
+        employeeEntity.setJoiningDate("15/01/2021");
+
 
         when(employeeRepository.findById(employeeId)).thenReturn(Optional.of(employeeEntity));
         when(employeePayrollBuilder.buildEmployeeEntity(employeeDto, employeeEntity)).thenReturn(employeeEntity);
@@ -144,45 +151,64 @@ public class EmployeePayrollServiceTest {
         assertEquals(employeeEntity.getGender(), employeePayrollArgumentCaptor.getValue().getGender());
         assertEquals(employeeEntity.getDepartment(), employeePayrollArgumentCaptor.getValue().getDepartment());
         assertEquals(employeeEntity.getNotes(), employeePayrollArgumentCaptor.getValue().getNotes());
+        assertEquals(employeeEntity.getJoiningDate(), employeePayrollArgumentCaptor.getValue().getJoiningDate());
 
     }
 
     @Test
-    void givenAEmployeeDetails_whenUpdateEmployeeIsCalled_shouldThrowExceptionMessage() {
+    void whenUpdateEmployeeCalled_ThenIfNotFindById_ShouldThrowException() {
         int employeeId = 1;
         EmployeeDto employeeDto = new EmployeeDto();
         employeeDto.setName("Sreelipta");
-        employeeDto.setSalary(20000);
         employeeDto.setGender("Female");
+        employeeDto.setSalary(20000);
         employeeDto.setDepartment("cse");
         employeeDto.setNotes("Regular");
+        employeeDto.setJoiningDate("15/01/2021");
         when(employeeRepository.findById(employeeId)).thenReturn(Optional.empty());
-        assertThrows(CustomException.class, () -> employeePayrollService.updateEmployee(employeeId, employeeDto));
+        assertThrows(EmployeePayrollCustomException.class, () -> employeePayrollService.updateEmployee(employeeId, employeeDto));
     }
 
     @Test
-    void givenwhenDeleteEmployeeDataCalled_ShouldDeleteEmployeeDataAndReturnSuccessMessage() {
+    void givenWhenDeleteEmployeeCalled_ShouldDeleteEmployeeDataAndReturnSuccessMessage() {
         String successMessage = "Employee details deleted successfully";
         int employeeId = 1;
         EmployeeDto employeeDto = new EmployeeDto();
         employeeDto.setName("Sreelipta");
-        employeeDto.setSalary(20000);
         employeeDto.setGender("Female");
+        employeeDto.setSalary(20000);
         employeeDto.setDepartment("cse");
         employeeDto.setNotes("Regular");
+        employeeDto.setJoiningDate("15/01/2021");
 
         EmployeeEntity employeeEntity = new EmployeeEntity();
         employeeEntity.setId(1);
         employeeEntity.setName("Sreelipta");
-        employeeEntity.setSalary(20000);
         employeeEntity.setGender("Female");
+        employeeEntity.setSalary(20000);
         employeeEntity.setDepartment("cse");
         employeeEntity.setNotes("Regular");
+        employeeEntity.setJoiningDate("15/01/2021");
 
         when(employeeRepository.findById(employeeId)).thenReturn(Optional.of(employeeEntity));
         String actualMessage = employeePayrollService.deleteEmployee(employeeId);
         assertEquals(successMessage, actualMessage);
         verify(employeeRepository, times(1)).delete(employeeEntity);
+    }
+
+    @Test
+    void whenDeleteEmployeeCalled_ThenIfNotFindById_ShouldThrowException() {
+        EmployeeEntity employeeEntity = new EmployeeEntity();
+        employeeEntity.setId(1);
+        employeeEntity.setName("Sreelipta");
+        employeeEntity.setGender("Female");
+        employeeEntity.setSalary(20000);
+        employeeEntity.setDepartment("cse");
+        employeeEntity.setNotes("Regular");
+        employeeEntity.setJoiningDate("15/01/2021");
+        when(employeeRepository.findById(employeeEntity.getId())).thenReturn(Optional.empty());
+        assertThrows(EmployeePayrollCustomException.class,
+                ()-> employeePayrollService.deleteEmployee(employeeEntity.getId()));
     }
 
 
