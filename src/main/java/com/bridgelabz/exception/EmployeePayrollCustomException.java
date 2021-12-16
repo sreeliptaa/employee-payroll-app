@@ -7,9 +7,9 @@ package com.bridgelabz.exception;
  * @since : 04-12-2021
  */
 
-public class CustomException extends RuntimeException{
+public class EmployeeCustomException extends RuntimeException{
 
-    public CustomException(String message) {
+    public EmployeeCustomException(String message) {
         super(message);
     }
 }
