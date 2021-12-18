@@ -2,7 +2,6 @@ package com.bridgelabz.service;
 
 import com.bridgelabz.dto.EmployeeDto;
 import com.bridgelabz.entity.EmployeeEntity;
-
 import java.util.List;
 
 /**
@@ -12,6 +11,7 @@ import java.util.List;
  * @since 2021-12-11
  */
 public interface IEmployeePayrollService {
+
     List<EmployeeDto> getListOfAllEmployee();
 
     EmployeeEntity findEmployeeById(int id);
