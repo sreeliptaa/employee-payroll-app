@@ -26,7 +26,6 @@ public class EmployeePayrollBuilder {
      * @param employeeEntity : This is the Entity class's object which is the destination for that copied properties
      * @return the object of Employee class
      */
-    
     public EmployeeEntity buildEmployeeEntity(EmployeeDto employeeDto, EmployeeEntity employeeEntity) {
         modelMapper.map(employeeDto, employeeEntity);
         return employeeEntity;

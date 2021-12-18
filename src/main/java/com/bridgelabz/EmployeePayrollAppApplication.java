@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Bean;
 
 /**
  * Purpose : To simulate Employee Payroll Application
- *
  * @author : SREELIPTA
  * @since : 06-12-2021
  */
