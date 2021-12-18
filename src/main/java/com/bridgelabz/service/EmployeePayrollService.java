@@ -20,9 +20,10 @@ import java.util.stream.Collectors;
  */
 
 @Service
-public class EmployeePayrollService {
+public class EmployeePayrollService implements IEmployeePayrollService {
+
     private static final String EMPLOYEE_ADDED_SUCCESSFULLY = "Employee details added successfully";
-    private static final String INVALID_ID = "Invalid Id";
+    private static final String INVALID_ID = "Invalid Employee Id";
     private static final String EMPLOYEE_DELETED_SUCCESSFULLY = "Employee details deleted successfully";
     private static final String EMPLOYEE_UPDATED_SUCCESSFULLY = "Employee Details updated successfully";
 
@@ -40,11 +41,12 @@ public class EmployeePayrollService {
      *
      * @return the list of all employee records
      */
+    @Override
     public List<EmployeeDto> getListOfAllEmployee() {
         return employeeRepository
                 .findAll()
                 .stream()
-                .map(employeePayroll -> modelMapper.map(employeePayroll, EmployeeDto.class))
+                .map(employeeEntity -> modelMapper.map(employeeEntity, EmployeeDto.class))
                 .collect(Collectors.toList());
     }
 
@@ -54,6 +56,7 @@ public class EmployeePayrollService {
      * @param id unique id of the records
      * @return the status of the employee records
      */
+    @Override
     public EmployeeEntity findEmployeeById(int id) {
         return employeeRepository.findById(id).orElseThrow(() -> new EmployeePayrollCustomException(INVALID_ID));
     }
@@ -64,6 +67,7 @@ public class EmployeePayrollService {
      * @param employeeDto :is used to add data from client
      * @return employee payroll records are created
      */
+    @Override
     public String addEmployee(EmployeeDto employeeDto) {
         EmployeeEntity employeeEntity = modelMapper.map(employeeDto, EmployeeEntity.class);
         employeeRepository.save(employeeEntity);
@@ -77,6 +81,7 @@ public class EmployeePayrollService {
      * @param employeeDto getting data from client
      * @return updated records of the employee payroll service
      */
+    @Override
     public String updateEmployee(int id, EmployeeDto employeeDto) throws EmployeePayrollCustomException {
         EmployeeEntity employeeEntity = findEmployeeById(id);
         employeeEntity = employeePayrollBuilder.buildEmployeeEntity(employeeDto, employeeEntity);
@@ -90,6 +95,7 @@ public class EmployeePayrollService {
      * @param id unique id of the employee payroll service records
      * @return the status of the record which deleted or not
      */
+    @Override
     public String deleteEmployee(int id) throws EmployeePayrollCustomException {
         EmployeeEntity employeeEntity = findEmployeeById(id);
         employeeRepository.delete(employeeEntity);

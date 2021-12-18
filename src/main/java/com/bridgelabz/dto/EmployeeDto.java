@@ -32,7 +32,7 @@ public class EmployeeDto {
 
     @NotNull(message = "Department name should not be empty")
     @Size(message = "Department name Should be within 50 letters", max = 50)
-    private List<String> department;
+    private List<String> departments;
 
     @NotNull(message = "Notes should not be empty")
     @Size(message = "Notes should be within 150 letters", max = 150)
