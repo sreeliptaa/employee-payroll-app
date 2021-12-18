@@ -34,8 +34,9 @@ public class EmployeeEntity {
     private String joiningDate;
 
     @ElementCollection
-    @CollectionTable(name = "employee_department", joinColumns = @JoinColumn(name = "id"))
-    private List<String> department;
+    @CollectionTable(name = "employee_department", joinColumns = @JoinColumn(name = "department_id"))
+    @Column(name="DEPARTMENT")
+    private List<String> departments;
 
     @Column(name = "NOTES")
     private String notes;
