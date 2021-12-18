@@ -20,6 +20,7 @@ public class EmployeePayrollControllerTest {
 
     @InjectMocks
     private EmployeePayrollController employeePayrollController;
+
     @Mock
     private EmployeePayrollService employeePayrollService;
 
@@ -30,7 +31,7 @@ public class EmployeePayrollControllerTest {
         employeeDto.setName("Sreelipta");
         employeeDto.setGender("Female");
         employeeDto.setSalary(20000);
-        employeeDto.setDepartment((List.of("Cse")));
+        employeeDto.setDepartments((List.of("Cse")));
         employeeDto.setNotes("Regular");
         employeeDto.setJoiningDate("15/01/2021");
         employeeDtoList.add(employeeDto);
@@ -38,7 +39,7 @@ public class EmployeePayrollControllerTest {
         employeeDto1.setName("Simran");
         employeeDto1.setSalary(25000);
         employeeDto1.setGender("Female");
-        employeeDto1.setDepartment((List.of("Cse")));
+        employeeDto1.setDepartments((List.of("Cse")));
         employeeDto1.setNotes("Regular");
         employeeDto1.setJoiningDate("05/06/2021");
         employeeDtoList.add(employeeDto1);
@@ -48,7 +49,7 @@ public class EmployeePayrollControllerTest {
             assertEquals(employeeDtoList.get(i).getName(), actualResponse.get(i).getName());
             assertEquals(employeeDtoList.get(i).getSalary(), actualResponse.get(i).getSalary());
             assertEquals(employeeDtoList.get(i).getGender(), actualResponse.get(i).getGender());
-            assertEquals(employeeDtoList.get(i).getDepartment(), actualResponse.get(i).getDepartment());
+            assertEquals(employeeDtoList.get(i).getDepartments(), actualResponse.get(i).getDepartments());
             assertEquals(employeeDtoList.get(i).getNotes(), actualResponse.get(i).getNotes());
         }
     }
@@ -60,7 +61,7 @@ public class EmployeePayrollControllerTest {
         employeeDto.setName("Sreelipta");
         employeeDto.setSalary(20000);
         employeeDto.setGender("Female");
-        employeeDto.setDepartment((List.of("Cse")));
+        employeeDto.setDepartments((List.of("Cse")));
         employeeDto.setNotes("Regular");
         employeeDto.setJoiningDate("15/01/2021");
         when(employeePayrollService.addEmployee(employeeDto)).thenReturn(successString);
@@ -76,7 +77,7 @@ public class EmployeePayrollControllerTest {
         employeeDto.setName("Sreelipta");
         employeeDto.setSalary(20000);
         employeeDto.setGender("Female");
-        employeeDto.setDepartment((List.of("Cse")));
+        employeeDto.setDepartments((List.of("Cse")));
         employeeDto.setNotes("Regular");
         employeeDto.setJoiningDate("15/01/2021");
         when(employeePayrollService.updateEmployee(employeeId, employeeDto)).thenReturn(successString);
