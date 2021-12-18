@@ -44,43 +44,43 @@ public class EmployeePayrollControllerIntegrationTest {
         when(employeePayrollService.addEmployee(any())).thenReturn("success");
         mockMvc.perform(MockMvcRequestBuilders
                 .post("/employee/detail")
-                .content("{\"name\":\"Sreelipta\",\"salary\":50000,\"gender\":\"Female\"," +
-                        "\"joiningDate\":\"09/21/2021\",\"department\":[\"Sales,Development,Testing\"]," +
-                        "\"notes\":\"regular\",\"imagePath\":\"s.jpg\"}")
+                .content("{\"name\":\"Lisa\",\"salary\":50000,\"gender\":\"Female\"," +
+                        "\"joiningDate\":\"09/12/2021\",\"departments\":[\"HR\"],\"notes\":\"Regular\"," +
+                        "\"imagePath\":\"image1.jpg\"}")
                 .contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(status().isOk());
     }
 
-    @Test
-    void updateEmployeeTest() throws Exception {
-        EmployeeDto employeeDto = new EmployeeDto();
-        employeeDto.setName("Sreelipta");
-        employeeDto.setSalary(20000);
-        employeeDto.setGender("Female");
-        employeeDto.setDepartment((List.of("Cse")));
-        employeeDto.setNotes("Regular");
-        employeeDto.setJoiningDate("15-01-2021");
-        employeeDto.setImagePath("image.jpg");
-        int id = 1;
-        when(employeePayrollService.updateEmployee(id, employeeDto)).thenReturn("success");
-        mockMvc.perform(MockMvcRequestBuilders
-                .put("/employee/detail/1")
-                .content("{\"name\":\"Sreelipta\",\"salary\":50000,\"gender\":\"Female\"," +
-                        "\"joiningDate\":\"09/21/2021\",\"department\":[\"Sales,Development,Testing\"]," +
-                        "\"notes\":\"regular\",\"imagePath\":\"s.jpg\"}")
-                .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(status().isOk());
-    }
+        @Test
+        void updateEmployeeTest() throws Exception {
+            EmployeeDto employeeDto = new EmployeeDto();
+            employeeDto.setName("Sreelipta");
+            employeeDto.setSalary(20000);
+            employeeDto.setGender("Female");
+            employeeDto.setDepartments((List.of("Cse")));
+            employeeDto.setNotes("Regular");
+            employeeDto.setJoiningDate("15/01/2021");
+            employeeDto.setImagePath("image.jpg");
+            int id = 1;
+            when(employeePayrollService.updateEmployee(id, employeeDto)).thenReturn("success");
+            mockMvc.perform(MockMvcRequestBuilders
+                    .put("/employee/detail/1")
+                    .content("{\"name\":\"Lisa\",\"salary\":50000,\"gender\":\"Female\"," +
+                            "\"joiningDate\":\"09/12/2021\",\"departments\":[\"HR\"],\"notes\":\"Regular\"," +
+                            "\"imagePath\":\"image1.jpg\"}")
+                    .contentType(MediaType.APPLICATION_JSON_VALUE))
+                    .andExpect(status().isOk());
+        }
 
-    @Test
-    void deleteEmployeeTest() throws Exception {
-        when(employeePayrollService.deleteEmployee(1)).thenReturn("success");
-        mockMvc.perform(MockMvcRequestBuilders
-                .delete("/employee/detail/1")
-                .content("{\"name\":\"Sreelipta\",\"salary\":50000,\"gender\":\"Female\"," +
-                        "\"joiningDate\":\"09/21/2021\",\"department\":[\"Sales,Development,Testing\"]," +
-                        "\"notes\":\"regular\",\"imagePath\":\"s.jpg\"}")
-                .contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(status().isOk());
+        @Test
+        void deleteEmployeeTest() throws Exception {
+            when(employeePayrollService.deleteEmployee(1)).thenReturn("success");
+            mockMvc.perform(MockMvcRequestBuilders
+                    .delete("/employee/detail/1")
+                    .content("{\"name\":\"Lisa\",\"salary\":50000,\"gender\":\"Female\"," +
+                            "\"joiningDate\":\"09/12/2021\",\"departments\":[\"HR\"],\"notes\":\"Regular\"," +
+                            "\"imagePath\":\"image1.jpg\"}")
+                    .contentType(MediaType.APPLICATION_JSON_VALUE))
+                    .andExpect(status().isOk());
+        }
     }
-}
