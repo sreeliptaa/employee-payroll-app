@@ -10,7 +10,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- * Purpose : To configure the SWAGGER2 documentation for employee payroll service application
+ * Purpose : To configure the SWAGGER2 documentation for employee payroll service
  *
  * @author SREELIPTA
  * @since 2021-12-15
@@ -46,7 +46,7 @@ public class SwaggerConfiguration {
                 .description("Sample Documentation Generated Using SWAGGER2 for Employee Payroll Rest API")
                 .termsOfServiceUrl("https://github.com/sreeliptaa")
                 .license("License")
-                .licenseUrl("https://github.com/SUDIPP22")
+                .licenseUrl("https://github.com/sreeliptaa")
                 .version("1.0")
                 .build();
     }
