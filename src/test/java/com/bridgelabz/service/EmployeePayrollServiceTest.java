@@ -25,9 +25,6 @@ import java.util.Optional;
 @ExtendWith(MockitoExtension.class)
 public class EmployeePayrollServiceTest {
 
-    @InjectMocks
-    private EmployeePayrollService employeePayrollService;
-
     @Mock
     private EmployeeRepository employeeRepository;
 
@@ -37,6 +34,9 @@ public class EmployeePayrollServiceTest {
     @Mock
     private EmployeePayrollBuilder employeePayrollBuilder;
 
+    @InjectMocks
+    private EmployeePayrollService employeePayrollService;
+
     @Test
     void givenWhenGetAllEmployeeCalled_ShouldReturnTheListOfEmployee() {
         List<EmployeeEntity> employeeEntityList = new ArrayList<>();
@@ -44,17 +44,16 @@ public class EmployeePayrollServiceTest {
         employeeEntity1.setName("Sreelipta");
         employeeEntity1.setGender("Female");
         employeeEntity1.setSalary(20000);
-        employeeEntity1.setDepartment((List.of("Cse")));
+        employeeEntity1.setDepartments((List.of("Cse")));
         employeeEntity1.setNotes("Regular");
         employeeEntity1.setJoiningDate("15/01/2021");
-
         employeeEntityList.add(employeeEntity1);
         EmployeeEntity employeeEntity2 = new EmployeeEntity();
         employeeEntity2.setId(2);
         employeeEntity2.setName("Simran");
         employeeEntity2.setGender("Female");
         employeeEntity2.setSalary(25000);
-        employeeEntity2.setDepartment((List.of("Cse")));
+        employeeEntity2.setDepartments((List.of("Cse")));
         employeeEntity2.setNotes("Regular");
         employeeEntity2.setJoiningDate("05/06/2021");
         employeeEntityList.add(employeeEntity2);
@@ -64,7 +63,7 @@ public class EmployeePayrollServiceTest {
         employeeDto1.setName("Sreelipta");
         employeeDto1.setGender("Female");
         employeeDto1.setSalary(20000);
-        employeeDto1.setDepartment((List.of("Cse")));
+        employeeDto1.setDepartments((List.of("Cse")));
         employeeDto1.setNotes("Regular");
         employeeDto1.setJoiningDate("15/01/2021");
         employeeDtoList.add(employeeDto1);
@@ -72,7 +71,7 @@ public class EmployeePayrollServiceTest {
         employeeDto2.setName("Simran");
         employeeDto2.setSalary(25000);
         employeeDto2.setGender("Female");
-        employeeDto2.setDepartment((List.of("Cse")));
+        employeeDto2.setDepartments((List.of("Cse")));
         employeeDto2.setNotes("Regular");
         employeeDto2.setJoiningDate("05/06/2021");
         employeeDtoList.add(employeeDto2);
@@ -99,7 +98,7 @@ public class EmployeePayrollServiceTest {
         employeeDto.setName("Sreelipta");
         employeeDto.setGender("Female");
         employeeDto.setSalary(20000);
-        employeeDto.setDepartment((List.of("Cse")));
+        employeeDto.setDepartments((List.of("Cse")));
         employeeDto.setNotes("Regular");
         employeeDto.setJoiningDate("15/01/2021");
 
@@ -108,7 +107,7 @@ public class EmployeePayrollServiceTest {
         employeeEntity.setName("Sreelipta");
         employeeEntity.setGender("Female");
         employeeEntity.setSalary(20000);
-        employeeEntity.setDepartment((List.of("Cse")));
+        employeeEntity.setDepartments((List.of("Cse")));
         employeeEntity.setNotes("Regular");
         employeeEntity.setJoiningDate("15/01/2021");
 
@@ -127,7 +126,7 @@ public class EmployeePayrollServiceTest {
         employeeDto.setName("Sreelipta");
         employeeDto.setGender("Female");
         employeeDto.setSalary(20000);
-        employeeDto.setDepartment((List.of("Cse")));
+        employeeDto.setDepartments((List.of("Cse")));
         employeeDto.setNotes("Regular");
         employeeDto.setJoiningDate("15/01/2021");
 
@@ -136,7 +135,7 @@ public class EmployeePayrollServiceTest {
         employeeEntity.setName("Sreelipta");
         employeeEntity.setGender("Female");
         employeeEntity.setSalary(20000);
-        employeeEntity.setDepartment((List.of("Cse")));
+        employeeEntity.setDepartments((List.of("Cse")));
         employeeEntity.setNotes("Regular");
         employeeEntity.setJoiningDate("15/01/2021");
 
@@ -148,7 +147,7 @@ public class EmployeePayrollServiceTest {
         assertEquals(employeeEntity.getName(), employeePayrollArgumentCaptor.getValue().getName());
         assertEquals(employeeEntity.getSalary(), employeePayrollArgumentCaptor.getValue().getSalary());
         assertEquals(employeeEntity.getGender(), employeePayrollArgumentCaptor.getValue().getGender());
-        assertEquals(employeeEntity.getDepartment(), employeePayrollArgumentCaptor.getValue().getDepartment());
+        assertEquals(employeeEntity.getDepartments(), employeePayrollArgumentCaptor.getValue().getDepartments());
         assertEquals(employeeEntity.getNotes(), employeePayrollArgumentCaptor.getValue().getNotes());
         assertEquals(employeeEntity.getJoiningDate(), employeePayrollArgumentCaptor.getValue().getJoiningDate());
 
@@ -161,7 +160,7 @@ public class EmployeePayrollServiceTest {
         employeeDto.setName("Sreelipta");
         employeeDto.setGender("Female");
         employeeDto.setSalary(20000);
-        employeeDto.setDepartment((List.of("Cse")));
+        employeeDto.setDepartments((List.of("Cse")));
         employeeDto.setNotes("Regular");
         employeeDto.setJoiningDate("15/01/2021");
         when(employeeRepository.findById(employeeId)).thenReturn(Optional.empty());
@@ -176,7 +175,7 @@ public class EmployeePayrollServiceTest {
         employeeDto.setName("Sreelipta");
         employeeDto.setGender("Female");
         employeeDto.setSalary(20000);
-        employeeDto.setDepartment((List.of("Cse")));
+        employeeDto.setDepartments((List.of("Cse")));
         employeeDto.setNotes("Regular");
         employeeDto.setJoiningDate("15/01/2021");
 
@@ -185,7 +184,7 @@ public class EmployeePayrollServiceTest {
         employeeEntity.setName("Sreelipta");
         employeeEntity.setGender("Female");
         employeeEntity.setSalary(20000);
-        employeeEntity.setDepartment((List.of("Cse")));
+        employeeEntity.setDepartments((List.of("Cse")));
         employeeEntity.setNotes("Regular");
         employeeEntity.setJoiningDate("15/01/2021");
 
@@ -202,7 +201,7 @@ public class EmployeePayrollServiceTest {
         employeeEntity.setName("Sreelipta");
         employeeEntity.setGender("Female");
         employeeEntity.setSalary(20000);
-        employeeEntity.setDepartment((List.of("Cse")));
+        employeeEntity.setDepartments((List.of("Cse")));
         employeeEntity.setNotes("Regular");
         employeeEntity.setJoiningDate("15/01/2021");
         when(employeeRepository.findById(employeeEntity.getId())).thenReturn(Optional.empty());
